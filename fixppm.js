@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         More readable PPM
 // @namespace    https://itg.crifnet.com/itg/tm/EditTimeSheet.do?timesheetId=*
-// @version      1.0
+// @version      1.1
 // @description  Finally, I see where to report!
 // @author       Zyngi
 // @match        https://itg.crifnet.com/itg/tm/EditTimeSheet.do?timesheetId=*
