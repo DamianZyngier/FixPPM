@@ -34,7 +34,7 @@
 			}
 		}
 	}
-
+	
 	function validateSum() {
 		colorTdsInTable('#table7');
 		var resultTable = document.querySelector('#table7');
@@ -46,11 +46,13 @@
 			if (resultNodes[i].parentNode.style.backgroundColor == bgColorSaturday || resultNodes[i].parentNode.style.backgroundColor == bgColorSunday) {
 				continue;
 			}
-
+			
 			if (resultNodes[i].innerHTML == "8,00") {
-				resultNodes[i].parentNode.style.backgroundColor= "lightgreen";
+				resultNodes[i].parentNode.style.backgroundColor = "lightgreen";
+			} else if (parseFloat(resultNodes[i].innerHTML.replace(",",".")) > 8 || parseFloat(resultNodes[i].innerHTML.replace(",",".")) % 0.5 != 0) {
+				resultNodes[i].parentNode.style.backgroundColor = "orange";
 			} else {
-				resultNodes[i].parentNode.style.backgroundColor= "white";
+				resultNodes[i].parentNode.style.backgroundColor = "white";
 			}
 		}
 	}
