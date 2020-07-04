@@ -13,7 +13,6 @@ All notable changes to this project will be documented in this file.
 
 ## [1.1] - 2020-07-01
 
-
 - Changed 'Validate sum' for result to check result if maximum value has been reached, or if it is dividable by 0,5.
 - Added LICENSE.md.
 
