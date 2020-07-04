@@ -63,7 +63,7 @@
 		}
 	}
 
-    function clearZeros() {
+	function clearZeros() {
 		var allInputs = document.getElementsByTagName("input");
 		for (i = 0; i < allInputs.length; i++) {
 			if(typeof allInputs[i] == "undefined") {
@@ -224,12 +224,12 @@
 	
 	colorHeaderRow();
 	
-    createButton(document.body, clearZeros, "Clear all 0,00");
-    createButton(document.body, validateAllFields, "Validate");
-    createCheckbox(document.body, checkTheBox, "Auto clear & validate");
-	
+	createButton(document.body, clearZeros, "Clear all 0,00");
+	createButton(document.body, validateAllFields, "Validate");
+	createCheckbox(document.body, checkTheBox, "Auto clear & validate");
+
 	clearZeros();
-	
+
 	colorAllTdsInTable("#table4");
 	colorAllTdsInTable("#table7");
 })();
