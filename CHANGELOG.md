@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4] - 2020-07-05
+
+- Fixed script behavior with "use strict".
+- Added features and setup instruction to README file.
+
 ## [1.3] - 2020-07-04
 
 - Added checkbox to automatically apply clear all 0,00's, and validate all input and result fields.

@@ -5,14 +5,14 @@
 // @homepageURL  https://github.com/DamianZyngier/FixPPM/
 // @updateURL    https://raw.githubusercontent.com/DamianZyngier/FixPPM/master/fixppm.js
 // @downloadURL  https://raw.githubusercontent.com/DamianZyngier/FixPPM/master/fixppm.js
-// @version      1.3
+// @version      1.4
 // @description  Finally, I see where to report!
 // @author       Damian Zyngier
 // @match        https://itg.crifnet.com/itg/tm/EditTimeSheet.do?timesheetId=*
 // ==/UserScript==
 
 (function() {
-    'use strict';
+	"use strict";
 
 	var maxValue = 8;
 	var maxValueString = "8,00";
@@ -63,9 +63,9 @@
 		}
 	}
 
-	function clearZeros() {
+    function clearZeros() {
 		var allInputs = document.getElementsByTagName("input");
-		for (i = 0; i < allInputs.length; i++) {
+		for (var i = 0; i < allInputs.length; i++) {
 			if(typeof allInputs[i] == "undefined") {
 				continue;
 			}
@@ -77,10 +77,10 @@
 	}
 	
 	function validateAllFields() {
-		var value;
-		var inputsTable = document.querySelector("#table4");
-		var inputNodes = inputsTable.querySelectorAll("input");
-		for (i = 0; i < inputNodes.length; i++) {
+		var value,
+			inputsTable = document.querySelector("#table4"),
+			inputNodes = inputsTable.querySelectorAll("input");
+		for (var i = 0; i < inputNodes.length; i++) {
 			if(typeof inputNodes[i] == "undefined" || inputNodes[i].type == "hidden") {
 				continue;
 			}
@@ -102,25 +102,26 @@
 	}
 	
 	function validateAndColorInput(object) {
-			console.log(object.value);
-		
 		var nodeValue = parseFloat(object.value.replace(",","."));
 		
 		if (!isNaN(nodeValue) && (object.value.length > 4 || nodeValue % 0.5 != 0 || nodeValue > maxValue )) {
 			object.parentNode.style.backgroundColor = bgColorWarning;
+		} else if (nodeValue == maxValue) {
+			object.parentNode.style.backgroundColor = bgColorCorrect;
 		} else {
 			colorDefaultInput(object.parentNode);
 		}
 	}
 	
 	function validateResults() {
-		var nodeValue;
-		var resultTable = document.querySelector('#table7');
-		var resultNodes = resultTable.querySelectorAll("span");
-		for (i = 0; i < resultNodes.length; i++) {
+		var nodeValue,
+			resultTable = document.querySelector('#table7'),
+			resultNodes = resultTable.querySelectorAll("span");
+		for (var i = 0; i < resultNodes.length; i++) {
 			if(typeof resultNodes[i] == "undefined") {
 				continue;
 			}
+			
 			nodeValue = resultNodes[i].innerHTML;
 			if (nodeValue == maxValueString) {
 				resultNodes[i].parentNode.style.backgroundColor = bgColorCorrect;
@@ -144,16 +145,17 @@
 	
 	
 	function colorAllTdsInTable(tableId) {
-		var mainTable = document.querySelector(tableId);
-		var trSelectors = mainTable.querySelectorAll('tr');
-		var tdSelectors, i, j;
-		for (i = 0; i < trSelectors.length; i++) {
+		var tdSelectors,
+			mainTable = document.querySelector(tableId),
+			trSelectors = mainTable.querySelectorAll('tr');
+
+		for (var i = 0; i < trSelectors.length; i++) {
 			if(typeof trSelectors[i] == "undefined") {
 				continue;
 			}
 			tdSelectors = trSelectors[i].querySelectorAll('td');
 			
-			for (j = 0; j < tdSelectors.length; j++) {	
+			for (var j = 0; j < tdSelectors.length; j++) {	
 				if(typeof tdSelectors[j] == "undefined" || tdSelectors.length < 3) {
 					continue;
 				}
@@ -175,14 +177,14 @@
 	
 	function checkTheBox () {
 		clearZeros();
-		validateAllFields();
+		validateAllFields();	
 		
 		var isChecked = document.getElementById("fixPpmAuto").checked;
 		localStorage.setItem("isFixPpmAutoChecked", isChecked);
-		
 		var inputsTable = document.querySelector('#table4');
 		var inputNodes = inputsTable.querySelectorAll("input");
-		for (i = 0; i < inputNodes.length; i++) {
+		
+		for (var i = 0; i < inputNodes.length; i++) {
 			if(typeof inputNodes[i] == "undefined" || inputNodes[i].type == "hidden") {
 				continue;
 			}
@@ -224,12 +226,12 @@
 	
 	colorHeaderRow();
 	
-	createButton(document.body, clearZeros, "Clear all 0,00");
-	createButton(document.body, validateAllFields, "Validate");
-	createCheckbox(document.body, checkTheBox, "Auto clear & validate");
-
+    createButton(document.body, clearZeros, "Clear all 0,00");
+    createButton(document.body, validateAllFields, "Validate");
+    createCheckbox(document.body, checkTheBox, "Auto clear & validate");
+	
 	clearZeros();
-
+	
 	colorAllTdsInTable("#table4");
 	colorAllTdsInTable("#table7");
 })();
