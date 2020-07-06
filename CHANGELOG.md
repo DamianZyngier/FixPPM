@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.5] - 2020-07-06
+
+- Fixed script behavior with save button not accounting for missing input values. On mouse down, the values will restore for save operation.
+
 ## [1.4] - 2020-07-05
 
 - Fixed script behavior with "use strict".
