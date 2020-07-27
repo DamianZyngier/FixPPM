@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6] - 2020-07-27
+
+- Changed color scheme and table cell format of table.
+- Added additional column to "Total", which calculates days when "Auto" mode is enabled.
+
 ## [1.5] - 2020-07-06
 
 - Fixed script behavior with save button not accounting for missing input values. On mouse down, the values will restore for save operation.

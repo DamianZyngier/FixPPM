@@ -28,6 +28,7 @@ Validates input and result fields if:
 
 Automatically applies changes performed by buttons "Clear all 0,00" and "Validate".
 Value (if the box is checked or not) is saved between browser card closures, but may be forgotten after browser is closed.
+Calculates total days and adds it under "Total" column.
 
 ## Setup instruction
 
