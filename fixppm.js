@@ -5,7 +5,7 @@
 // @homepageURL  https://github.com/DamianZyngier/FixPPM/
 // @updateURL    https://raw.githubusercontent.com/DamianZyngier/FixPPM/master/fixppm.js
 // @downloadURL  https://raw.githubusercontent.com/DamianZyngier/FixPPM/master/fixppm.js
-// @version      1.5
+// @version      1.6
 // @description  Finally, I see where to report!
 // @author       Damian Zyngier
 // @match        https://itg.crifnet.com/itg/tm/EditTimeSheet.do?timesheetId=*
