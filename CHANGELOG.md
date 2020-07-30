@@ -2,10 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.7] - 2020-07-30
+
+- Added list of public holidays in Poland.
+
 ## [1.6] - 2020-07-27
 
 - Changed color scheme and table cell format of table.
 - Added additional column to "Total", which calculates days when "Auto" mode is enabled.
+- Table header will be always visible at top when scrolling through large amount of projects.
 
 ## [1.5] - 2020-07-06
 

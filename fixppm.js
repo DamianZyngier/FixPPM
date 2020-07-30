@@ -5,7 +5,7 @@
 // @homepageURL  https://github.com/DamianZyngier/FixPPM/
 // @updateURL    https://raw.githubusercontent.com/DamianZyngier/FixPPM/master/fixppm.js
 // @downloadURL  https://raw.githubusercontent.com/DamianZyngier/FixPPM/master/fixppm.js
-// @version      1.6
+// @version      1.7
 // @description  Finally, I see where to report!
 // @author       Damian Zyngier
 // @match        https://itg.crifnet.com/itg/tm/EditTimeSheet.do?timesheetId=*
@@ -16,15 +16,17 @@
 
 	"use strict";
 
-	var maxValue = 8;
+	var maxHoursDaily = 8;
 
-	var bgColorSaturday = "#ff9999"
-	var textColorSaturday = "black"
-	var bgColorSunday = "#ff6666"
-	var textColorSunday = "black"
-	var bgColorWarning = "#f9f966"
-	var bgColorDefault = "white"
-	var bgColorCorrect = "#98bf69"
+	var bgColorSaturday = "#ff9999";
+	var textColorSaturday = "black";
+	var bgColorSunday = "#ff6666";
+	var textColorSunday = "black";
+	var bgColorWarning = "#f9f966";
+	var bgColorDefault = "white";
+	var bgColorCorrect = "#98bf69";
+
+	var publicHolidays = ["01-01", "01-06", "04-12", "04-13", "05-01", "05-03", "05-31", "06-11", "08-14", "11-01", "11-11", "12-24", "12-25"];
 
 	GM_addStyle("#wiTable_leftDataDiv, #wiTable_middleDataDiv, #wiTable_rightDataDiv { height: 100% !important; }" +
 				 ".sticky { position: fixed !important; top: 0 !important; z-index: 300 !important; }" +
@@ -117,9 +119,9 @@
 	function validateAndColorInput(object) {
 		var nodeValue = parseFloat(object.value.replace(",","."));
 
-		if (!isNaN(nodeValue) && (object.value.length > 4 || nodeValue % 0.5 != 0 || nodeValue > maxValue )) {
+		if (!isNaN(nodeValue) && (object.value.length > 4 || nodeValue % 0.5 != 0 || nodeValue > maxHoursDaily )) {
 			object.parentNode.style.backgroundColor = bgColorWarning;
-		} else if (nodeValue == maxValue) {
+		} else if (nodeValue == maxHoursDaily) {
 			object.parentNode.style.backgroundColor = bgColorCorrect;
 		} else if (!isNaN(nodeValue) && nodeValue != 0) {
 			object.parentNode.style.backgroundColor = bgColorDefault;
@@ -138,9 +140,9 @@
 			}
 
 			nodeValue = parseFloat(resultNodes[i].innerHTML.replace(",","."));
-			if (nodeValue == maxValue) {
+			if (nodeValue == maxHoursDaily) {
 				resultNodes[i].parentNode.style.backgroundColor = bgColorCorrect;
-			} else if (nodeValue > 9999 || nodeValue > maxValue || nodeValue % 0.5 != 0) {
+			} else if (nodeValue > 9999 || nodeValue > maxHoursDaily || nodeValue % 0.5 != 0) {
 				resultNodes[i].parentNode.style.backgroundColor = bgColorWarning;
 			} else if (nodeValue != 0) {
 				resultNodes[i].parentNode.style.backgroundColor = bgColorDefault;
@@ -221,16 +223,15 @@
 				continue;
 			}
 
-			if (headerNodes[i].innerHTML.includes("So<br>")) {
-				headerNodes[i].style.backgroundColor = bgColorSaturday;
-				headerNodes[i].style.color = textColorSaturday;
-				saturdays[saturdays.length] = i;
-			}
 
-			if (headerNodes[i].innerHTML.includes("N<br>")) {
+			if (headerNodes[i].innerHTML.includes("N<br>") || new RegExp(publicHolidays.join("|")).test(headerNodes[i].innerHTML)) {
 				headerNodes[i].style.backgroundColor = bgColorSunday;
 				headerNodes[i].style.color = textColorSunday;
 				sundays[sundays.length] = i;
+			} else if (headerNodes[i].innerHTML.includes("So<br>")) {
+				headerNodes[i].style.backgroundColor = bgColorSaturday;
+				headerNodes[i].style.color = textColorSaturday;
+				saturdays[saturdays.length] = i;
 			}
 		}
 	}

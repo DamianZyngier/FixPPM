@@ -1,16 +1,16 @@
 # FixPPM
 
 FixPPM is a script that improves quality of work with HP Project and Portfolio Management by making it more readable and adds some QoL features. It is working only for raporting timesheets.
-It has been designed to work with Tampermonkey addon, but can be also used with other addons when modified.
+It has been designed to work with [tampermonkey](http://www.tampermonkey.net) addon, but can be also used with other addons when modified.
 
 ## Features
 
 On page startup:
 
 * clears values from all inputs that are equal to 0,00.
-* colors the Saturday and Sunday columns.
+* colors the Saturday and Sunday columns as well as the public holidays in Poland.
 
-Additionally, script introduces two buttons and a checkbox.
+Creates two buttons and a checkbox.
 
 ### Button "Clear all 0,00"
 
@@ -20,9 +20,9 @@ Clears 0,00 values from all inputs if any reappeared.
 
 Validates input and result fields if:
 
-* value is not dividable by 0,5 (paints table cell in orange)
-* value is higher than 8 (paints table cell in orange)
-* value is exactly 8 (paints table cell in light green)
+* value is not dividable by 0,5 (paints table cell in yellow)
+* value is higher than 8 (paints table cell in yellow)
+* value is exactly 8 (paints table cell in green)
 
 ### Checkbox "Auto clear & validate"
 
