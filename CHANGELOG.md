@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.7.1] - 2021-01-01
+
+- Updated list of public holidays in Poland for 2021.
+
 ## [1.7] - 2020-07-30
 
 - Added list of public holidays in Poland.

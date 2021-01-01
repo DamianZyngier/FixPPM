@@ -5,7 +5,7 @@
 // @homepageURL  https://github.com/DamianZyngier/FixPPM/
 // @updateURL    https://raw.githubusercontent.com/DamianZyngier/FixPPM/master/fixppm.js
 // @downloadURL  https://raw.githubusercontent.com/DamianZyngier/FixPPM/master/fixppm.js
-// @version      1.7
+// @version      1.7.1
 // @description  Finally, I see where to report!
 // @author       Damian Zyngier
 // @match        https://itg.crifnet.com/itg/tm/EditTimeSheet.do?timesheetId=*
@@ -26,7 +26,7 @@
 	var bgColorDefault = "white";
 	var bgColorCorrect = "#98bf69";
 
-	var publicHolidays = ["01-01", "01-06", "04-12", "04-13", "05-01", "05-03", "05-31", "06-11", "08-14", "11-01", "11-11", "12-24", "12-25"];
+	var publicHolidays = ["01-01", "01-06", "04-04", "04-05", "05-01", "05-03", "05-23", "06-03", "08-15", "11-01", "11-11", "12-25", "12-26"];
 
 	GM_addStyle("#wiTable_leftDataDiv, #wiTable_middleDataDiv, #wiTable_rightDataDiv { height: 100% !important; }" +
 				 ".sticky { position: fixed !important; top: 0 !important; z-index: 300 !important; }" +
